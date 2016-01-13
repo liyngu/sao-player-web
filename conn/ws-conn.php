@@ -21,15 +21,15 @@ function http_request($url, $method="GET", $data) {
 }
 
 function http_get($url) {
-    return http_request($url);
+    return json_decode(http_request($url), true);
 }
 
 function http_post($url, $data) {
-    return http_request($url,"POST", $data);
+    return json_decode(http_request($url,"POST", json_encode($data)), true);
 }
 
 function http_put($url, $data) {
-    http_request($url, "PUT", $data);
+    http_request($url, "PUT", json_encode($data));
 }
 
 function http_delete($url) {

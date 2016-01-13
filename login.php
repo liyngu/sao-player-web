@@ -1,6 +1,3 @@
-<?php
-require("conn/ws-conn.php");
-?>
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -16,7 +13,7 @@ require("conn/ws-conn.php");
     </script>
   </head>
   <body>
-    <form id="loginForm" action="index.php" method="POST">
+    <form id="loginForm" action="login-chk.php" method="POST">
       <div>
          <span>用户名：<span/>
          <input name="username" type="text" />
@@ -27,6 +24,13 @@ require("conn/ws-conn.php");
       </div>
       <div>
          <input id="login" type="submit" value="登录" />
+      </div>
+      <div class="error">
+        <?php
+        session_start();
+        echo $_SESSION["error"];
+        $_SESSION["error"] = "";
+        ?>
       </div>
     </form>
   </body>

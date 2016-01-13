@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("conn/ws-conn.php");
+?>
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -33,17 +37,33 @@ width:800px;
     <div id="warpper">
       <div id="top">
         <?php
-          include "top.php"
+        include ("top.php");
         ?>
       </div>
       <div id="left">
         <?php
-          include "left.php"
+        include ("left.php");
         ?>
       </div>
       <div id="main">
         <?php
-          include "main.php"
+        switch ($_GET["action"]) {
+            case "user":
+                include ("user/list.php");
+                break;
+            case "user/detail":
+                include("user/detail.php");
+                break;
+            case "user/update":
+                include("user/update.php");
+                break;
+            case "music":
+                include ("music/list.php");
+                break;
+            default:
+                include ("main.php");
+                break;
+        }
         ?>
       </div>
     </div>
